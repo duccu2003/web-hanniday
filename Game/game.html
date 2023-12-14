@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // Kiểm tra trạng thái trang web
+        var isInMaintenanceMode = false; // Thay đổi giá trị này thành false nếu trang web không đang trong quá trình bảo trì
+
+        if (isInMaintenanceMode) {
+            window.location.href = "main.html"; // Chuyển hướng đến trang đang bảo trì
+        }
+        var isCloseMode = false; // Thay đổi giá trị này thành false nếu trang web không đang trong quá trình bảo trì
+
+        if (isCloseMode) {
+            window.location.href = "Close.html"; // Chuyển hướng đến trang đang bảo trì
+        }
+
+        function playRandomMusic() {
+            var musicList = ["audio/menu.mp3"];
+
+            var gameMusic = document.getElementById("game-music");
+            var randomIndex = Math.floor(Math.random() * musicList.length);
+            gameMusic.src = musicList[randomIndex];
+            gameMusic.play();
+        }
+
+        // Gọi hàm playRandomMusic khi trang web được tải hoặc reset lại
+        window.addEventListener("load", playRandomMusic);
+        window.onload = function() {
+            window.addEventListener("load", playRandomMusic);
+        };
+        window.open = function() {
+            window.addEventListener("load", playRandomMusic);
+        };
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Game Fanmade cho lần comeback của nhóm nhạc NewJeans" />
+    <meta name="keywords" content="NewJeans Game, Get Up Game, NJ Game, njgame, newjeansgame" />
+    <meta name="author" content="Nguyễn Hoàng Đức" />
+    <link rel="icon" href="icon/Get_Up_Cover.webp">
+
+    <title>NewJeans Game</title>
+    <link rel="stylesheet" href="menu.css" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            pointer-events: none;
+        }
+        
+        .hidden-audio audio {
+            display: none;
+        }
+        
+        .hidden-image img {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+        
+        .hidden-image1 img {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        
+        .pointh1 {
+            top: 0;
+            left: 0;
+        }
+        
+        .timeh1 {
+            bottom: 0;
+            left: 0;
+        }
+        
+        .made-by {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: rgb(0, 0, 0);
+            font-size: 18px;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .option {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+        
+        .option:hover {
+            transform: scale(1.1);
+        }
+        
+        .option-1 {
+            top: 50px;
+            left: 80px;
+        }
+        
+        .option-2 {
+            top: 70px;
+            left: 280px;
+        }
+        
+        .option-3 {
+            bottom: 50px;
+            left: 50px;
+        }
+        
+        .option-4 {
+            bottom: 0;
+            left: 280px;
+        }
+        
+        .option-5 {
+            top: 170px;
+            left: 180px;
+        }
+        
+        .note {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(-720px, 300px);
+            font-size: 22px;
+        }
+        
+        .instruction {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-420px, -50px);
+            font-size: 22px;
+        }
+        
+        .instruction1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-130%, 0px);
+            font-size: 18px;
+        }
+        
+        .note1 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(-130%, 350px);
+            font-size: 18px;
+        }
+        
+        .t1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(380%, 380px);
+            font-size: 22px;
+            pointer-events: none;
+        }
+        
+        .t11 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(215%, 440%);
+            font-size: 18px;
+        }
+        
+        .hover-text {
+            display: none;
+            font-size: 18px;
+            margin-top: -2px;
+        }
+        
+        .option:hover .hover-text {
+            display: block;
+        }
+        
+        .new-line {
+            display: block;
+        }
+        
+        .note,
+        .note1 {
+            top: 1vh;
+            right: 1vh;
+            color: #f9f9f9;
+            background-color: #af0df466;
+        }
+        
+        .instruction,
+        .instruction1 {
+            top: 1vh;
+            left: 1vh;
+            color: #f9f9f9;
+            background-color: #af0df466;
+        }
+        
+        .t1,
+        .t11 {
+            top: 1vh;
+            left: 1vh;
+            color: #100120;
+            background-color: #d90df4ca;
+        }
+        
+        #translateButton {
+            position: absolute;
+            top: -130px;
+            left: -380px;
+            pointer-events: auto;
+            padding: 10px 20px;
+            background-color: #4058d3;
+            /* Màu xanh cho nút "Translate" */
+            color: #fff;
+            /* Màu trắng cho chữ trên nút */
+            border-radius: 10px;
+        }
+        
+        #translateKoreanButton {
+            position: absolute;
+            top: -130px;
+            left: -500px;
+            pointer-events: auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: #c14732;
+            /* Màu xanh cho nút "Translate" */
+            color: #fff;
+            /* Màu trắng cho chữ trên nút */
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .note {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .instruction {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .instruction1 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .note1 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .t1 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .t11 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+        }
+        
+        @media only screen and (max-width: 1080px) {
+            .note {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .instruction {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .instruction1 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .note1 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .t1 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+            .t11 {
+                font-size: 0px;
+                background-color: #ffffff00;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8T6T9VD2W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-Y8T6T9VD2W");
+    </script>
+    <div id="loading" style="text-align: center;">
+        <img src="https://telegraph-image-bak.pages.dev/file/431920b688bfd9f1c6069.gif" alt="Loading">
+        <b id="loadingText" style="margin-top: 10px;">Loading...</b>
+    </div>
+</head>
+
+<body>
+
+    <div class="hidden-image">
+        <img src="icon/Bunnies.webp" alt="Image" loading="lazy" />
+        <img src="icon/Tokki.webp" alt="Image" loading="lazy" />
+        <img src="icon/gun.webp" alt="Image" loading="lazy" />
+        <img src="background/minji.webp" alt="Image" loading="lazy" />
+        <img src="skill/minji2.webp" alt="Image" loading="lazy" />
+        <img src="skill/hyein.webp" alt="Image" loading="lazy" />
+        <img src="skill/hearin.webp" alt="Image" loading="lazy" />
+        <img src="skill/hannilove.webp" alt="Image" loading="lazy" />
+        <img src="background/hanni.webp" alt="Image" loading="lazy" />
+        <img src="background/dan.webp" alt="Image" loading="lazy" />
+        <img src="skill/dan1.webp" alt="Image" loading="lazy" />
+        <img src="background/minji1.webp" alt="Image" loading="lazy" />
+        <img src="background/hyein1.webp" alt="Image" loading="lazy" />
+        <img src="background/hearin1.webp" alt="Image" loading="lazy" />
+    </div>
+
+    <audio autoplay loop>
+      <source src="audio/menu.mp3" type="audio/mp3" />
+    </audio>
+    <div class="made-by">Made By Nguyen Hoang Duc</div>
+    <div class="container">
+
+        <div id="translation">
+            <div id="vietnamese" lang="vi" style="display: none">
+                <div class="note" id="note">Lưu Ý:</div>
+                <div class="note1" id="note1">
+                    <div lang="en">
+                        - Một số trình duyệt có thể sẽ lỗi hoặc không hỗ trợ!<br /> - Đây là Game Fanmade 1 thành viên mong mọi người đừng đem so sánh
+                        <br /> - Vì khả năng cũng như kiến thức còn hạn chế nên Game còn rất nhiều lỗi nên mong mọi người bỏ qua<br /> - Vì xài 000webhost nên sẽ load khá chậm và Game này là bản thử chỉ mang tính chất cho vui!<br />
+                    </div>
+                </div>
+                <div class="instruction" id="instruction">Hướng Dẫn Sử Dụng:</div>
+                <div class="instruction1" id="instruction1">
+                    <div>
+                        - Di chuyển bằng Chuột<br />- Ấn chuột Trái hoặc phím W để dùng chiêu 1 <br />- Ấn phím Q để dùng chiêu 2, hồi trong 15s<br />- Ấn F5 hoặc Tải lại trang để chơi lại<br />- Bấm biểu tượng mũi tên Quay lại trang để về trang chọn
+                        nhân vật<br />- Bunnies và Carot là 1 Điểm, Tokki là được 2 Điểm<br />- Bạn sẽ WIN khi đạt 1000 Điểm
+                    </div>
+                </div>
+            </div>
+            <div id="english" lang="en">
+                <div class="note">Note:</div>
+                <div class="note1">
+                    <div lang="en">
+                        - Some browsers may crash or not support it!<br /> - This is a 1 member Fanmade Game, please don't compare<br /> - Because of the limited ability and knowledge, the game still has a lot of errors, so please ignore it<br /> - Because
+                        using 000webhost, it will load quite slowly and this Game is a trial version just for fun!
+                    </div>
+                </div>
+                <div class="instruction">User manual:</div>
+                <div class="instruction1">
+                    <div>
+                        - Move with Mouse<br /> - Press the Left mouse or W key to use 1<br /> - Press the Q key to use skill 2, and cools down for 15s<br /> - Press F5 or Reload page to play again<br /> - Press the arrow icon Back to the page to return
+                        to the character selection page<br /> - "Bunnies" and "Carrot" are worth 1 point, while "Tokki" is worth 2 points<br /> - You will WIN when you reach 1000 Points
+                    </div>
+                </div>
+            </div>
+            <div id="korean" lang="ko">
+                <div class="note">메모:</div>
+                <div class="note1">
+                    <div lang="en">
+                        - 일부 브라우저는 충돌하거나 지원하지 않을 수 있습니다!<br /> - 1인 팬메이드 게임입니다. 비교하지 마세요.<br /> - 제한된 능력과 지식으로 인해 여전히 게임에 오류가 많으므로 무시하십시오. <br /> - 000webhost를 사용하기 때문에 매우 느리게 로드되며 이 게임은 재미를 위한 평가판입니다!
+                    </div>
+                </div>
+                <div class="instruction">사용자 매뉴얼:</div>
+                <div class="instruction1">
+                    <div>
+                        - 마우스로 이동<br /> - 왼쪽 마우스 또는 W 키를 눌러 1을 사용합니다.<br /> - Q키를 누르면 2번 스킬을 사용하고 15초간 쿨다운<br /> - 다시 재생하려면 F5 또는 페이지 새로고침을 누르세요.<br /> - 페이지로 돌아가기 화살표 아이콘을 누르면 캐릭터 선택 페이지로 돌아갑니다. <br /> - "Bunnies"와 "Carrot"은 1 점, "Tokki"는 2 점의 가치가 있습니다.
+                        <br /> - 1000포인트에 도달하면 승리합니다.
+                    </div>
+                </div>
+            </div>
+            <button id="translateButton" onclick="toggleTranslation()">
+          English
+        </button>
+            <button id="translateKoreanButton" onclick="toggleKoreanTranslation()">
+          번역
+        </button>
+        </div>
+        <script>
+            var isKoreanTranslated = false;
+            window.onload = function() {
+                // Ẩn nội dung tiếng Anh và tiếng Hàn
+                var englishDiv = document.getElementById("english");
+                var koreanDiv = document.getElementById("korean");
+                englishDiv.style.display = "none";
+                koreanDiv.style.display = "none";
+
+                // Mặc định hiển thị nội dung tiếng Việt
+                var vietnameseDiv = document.getElementById("vietnamese");
+                vietnameseDiv.style.display = "block";
+            };
+
+            function toggleTranslation() {
+                var englishDiv = document.getElementById("english");
+                var vietnameseDiv = document.getElementById("vietnamese");
+                var koreanDiv = document.getElementById("korean");
+                var translateButton = document.getElementById("translateButton");
+                var translateKoreanButton = document.getElementById(
+                    "translateKoreanButton"
+                );
+
+                if (englishDiv.style.display === "none") {
+                    englishDiv.style.display = "block";
+                    vietnameseDiv.style.display = "none";
+                    koreanDiv.style.display = "none";
+                    translateButton.innerText = "Vietnamese";
+                    translateKoreanButton.innerText = "번역";
+                    isKoreanTranslated = false;
+                } else {
+                    englishDiv.style.display = "none";
+                    vietnameseDiv.style.display = "block";
+                    koreanDiv.style.display = "none";
+                    translateButton.innerText = "English";
+                }
+            }
+
+            function toggleKoreanTranslation() {
+                var englishDiv = document.getElementById("english");
+                var vietnameseDiv = document.getElementById("vietnamese");
+                var koreanDiv = document.getElementById("korean");
+                var translateButton = document.getElementById("translateButton");
+                var translateKoreanButton = document.getElementById(
+                    "translateKoreanButton"
+                );
+
+                if (koreanDiv.style.display === "none") {
+                    englishDiv.style.display = "none";
+                    vietnameseDiv.style.display = "none";
+                    koreanDiv.style.display = "block";
+                    translateButton.innerText = "English";
+                    translateKoreanButton.innerText = "Vietnamese";
+                    isKoreanTranslated = true;
+                } else {
+                    englishDiv.style.display = "none";
+                    vietnameseDiv.style.display = "block";
+                    koreanDiv.style.display = "none";
+                    translateButton.innerText = "English";
+                    translateKoreanButton.innerText = "번역";
+                    isKoreanTranslated = false;
+                }
+            }
+        </script>
+        <div class="option option-1">
+            <a href="Minji.html">
+                <img src="icon/1.webp" alt="Option 1" />
+                <div class="hover-text">▼</div>
+                <p class="o1">Minji</p>
+            </a>
+        </div>
+
+        <div class="option option-2">
+            <a href="Hearin.html">
+                <img src="icon/2.webp" alt="Option 2" />
+                <div class="hover-text">▼</div>
+                <p class="o2">Hearin</p>
+            </a>
+        </div>
+
+        <div class="option option-3">
+            <a href="Dan.html">
+                <img src="icon/3.webp" alt="Option 3" />
+                <div class="hover-text">▼</div>
+                <p class="o3">Danniel</p>
+            </a>
+        </div>
+
+        <div class="option option-4">
+            <a href="Hyein.html">
+                <img src="icon/4.webp" alt="Option 4" />
+                <div class="hover-text">▼</div>
+                <p class="o4">Hyein</p>
+            </a>
+        </div>
+
+        <div class="option option-5">
+            <a href="Hanni.html">
+                <img src="icon/5.webp" alt="Option 5" />
+                <div class="hover-text">▼</div>
+                <p class="o5">Hanni</p>
+            </a>
+        </div>
+    </div>
+    <script src="menu.js"></script>
+    <audio id="menu-audio" src="audio/menu.mp3"></audio>
+</body>
+
+</html>

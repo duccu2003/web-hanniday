@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url("background/main.webp");
+    background-color: #0b010f;
+    background-size: cover;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: "F1", sans-serif;
+    font-weight: 800;
+}
+
+body {
+    overflow: hidden;
+}
+
+
+/* Sử dụng media queries để điều chỉnh các phần tử cho các tỉ lệ màn hình khác nhau */
+
+@media (max-width: 600px) {
+    .bullet-halo {
+        width: 30px;
+        height: 30px;
+    }
+    .light-beam-halo {
+        width: 60px;
+        height: 60px;
+    }
+    #scoreboard {
+        font-size: 14px;
+    }
+    #character {
+        width: 45px;
+        height: 45px;
+    }
+    .made-by {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .bullet-halo {
+        width: 40px;
+        height: 40px;
+    }
+    .light-beam-halo {
+        width: 80px;
+        height: 80px;
+    }
+    #scoreboard {
+        font-size: 16px;
+    }
+    #character {
+        width: 60px;
+        height: 60px;
+    }
+    .made-by {
+        font-size: 18px;
+    }
+}
+
+@font-face {
+    font-family: "F1";
+    src: url("font/BLOXAT.ttf");
+    /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+}
+
+@font-face {
+    font-family: "F2";
+    src: url("font/BungeeShade-Regular.ttf");
+    /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+}
+
+body:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "F2", sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f9f9f99c;
+    border-radius: 70px;
+    pointer-events: none;
+    /* Màu chữ */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100vh;
+    padding-bottom: 50px;
+}
+
+#translation {
+    font-size: 40px;
+    color: #ebebeb;
+    text-align: center;
+}
+
+button {
+    pointer-events: auto;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #160db7;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}

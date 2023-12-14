@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NewJeans Game</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="icon/Get_Up_Cover.webp">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("background/Close.webp");
+            background-color: #0b010f;
+            background-size: cover;
+            pointer-events: none;
+            position: absolute;
+            width: 80%;
+            /* Thay đổi giá trị width thành 80% */
+            height: 100%;
+            left: 10%;
+            /* Thay đổi giá trị left thành 10% */
+            bottom: 0;
+            /* Thay đổi giá trị bottom thành 0 */
+        }
+        
+        body {
+            overflow: hidden;
+        }
+        /* Sử dụng media queries để điều chỉnh các phần tử cho các tỉ lệ màn hình khác nhau */
+        
+        @media (max-width: 600px) {
+            .made-by {
+                font-size: 16px;
+            }
+            .body {
+                background-size: cover;
+                background-size: cover;
+                background-image: 0;
+                background-color: #0b010f;
+            }
+            #translation1,
+            #translation2,
+            #translation3 {
+                font-family: "F2", sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                color: #160db7;
+                line-height: 1;
+                transform: rotate(0%);
+            }
+        }
+        
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .made-by {
+                font-size: 18px;
+            }
+            .body {
+                background-size: cover;
+                background-image: 0;
+                background-color: #0b010f;
+            }
+            #translation1,
+            #translation2,
+            #translation3 {
+                font-family: "F2", sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                color: #160db7;
+                line-height: 1;
+                transform: rotate(0%);
+            }
+        }
+        
+        @font-face {
+            font-family: "F1";
+            src: url("font/BLOXAT.ttf");
+            /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+        }
+        
+        @font-face {
+            font-family: "F2";
+            src: url("font/BungeeShade-Regular.ttf");
+            /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+        }
+        
+        .container1,
+        .container2,
+        .container3 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+        }
+        
+        #translation1,
+        #translation2,
+        #translation3 {
+            font-family: "F2", sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #160db7;
+            line-height: 1;
+        }
+        
+        #translation1 {
+            transform: rotate(-34deg);
+            position: absolute;
+            /* Sử dụng vị trí tuyệt đối */
+            top: 42%;
+            /* Di chuyển phần tử lên 50% từ phía trên */
+            left: -1%;
+            /* Di chuyển phần tử sang 50% từ phía trái */
+        }
+        
+        #translation2 {
+            transform: rotate(-39deg);
+            position: absolute;
+            /* Sử dụng vị trí tuyệt đối */
+            top: 42%;
+            /* Di chuyển phần tử lên 50% từ phía trên */
+            left: -4%;
+            /* Di chuyển phần tử sang 50% từ phía trái */
+        }
+        
+        #translation3 {
+            transform: rotate(-45deg);
+            position: absolute;
+            /* Sử dụng vị trí tuyệt đối */
+            top: 47%;
+            /* Di chuyển phần tử lên 50% từ phía trên */
+            left: 14%;
+            /* Di chuyển phần tử sang 50% từ phía trái */
+        }
+        
+        .error-container1,
+        .error-container2,
+        .error-container3 {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "F2", sans-serif;
+            font-size: 160px;
+            font-weight: bold;
+            color: #160db7;
+            transform-style: preserve-3d;
+        }
+        
+        .error-container1 {
+            top: 48%;
+            left: 82%;
+            animation: spin1 2s infinite linear;
+        }
+        
+        .error-container2 {
+            top: 34%;
+            left: 75%;
+            animation: move41 4s linear infinite;
+            /* Hiệu ứng di chuyển số 4 */
+            animation-direction: reverse;
+            /* Đảo ngược hướng di chuyển */
+        }
+        
+        .error-container3 {
+            top: 60%;
+            left: 90%;
+            animation: move42 4s linear infinite;
+            animation-direction: reverse;
+            /* Đảo ngược hướng di chuyển */
+        }
+        
+        .error-text {
+            transform-origin: center;
+        }
+        
+        @keyframes spin1 {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            100% {
+                transform: rotateX(0) rotateY(0) rotateZ(360deg);
+            }
+        }
+        
+        @keyframes move41 {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(220px) translateY(220px);
+                /* Di chuyển sang phải */
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+        
+        @keyframes move42 {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            50% {
+                transform: translateX(-220px) translateY(-220px);
+                /* Di chuyển sang phải */
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="made-by">Made By Nguyen Hoang Duc</div>
+    <div class="container1" id="translation1">
+        GAME ĐÃ XÓA KHÔNG THỂ TRUY CẬP ^^
+    </div>
+    <div class="container2" id="translation2">
+        THE GAME HAS BEEN DELETED AND CANNOT BE ACCESSED ^^
+    </div>
+    <div class="container3" id="translation3">
+        게임이 삭제되어 접근할 수 없습니다 ^^
+    </div>
+    <div class="error-container1">
+        <div class="error-text">0</div>
+    </div>
+    <div class="error-container2">
+        <div class="error-text">4</div>
+    </div>
+    <div class="error-container3">
+        <div class="error-text">4</div>
+    </div>
+    <script>
+        var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // Nếu là thiết bị di động hoặc iPad, chuyển hướng hoặc hiển thị thông báo
+            // Ví dụ chuyển hướng đến một trang khác
+            window.location.href = 'https://example.com/mobile-blocked.html';
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("mousedown", function(event) {
+                if (event.button === 0) {
+                    shootBullet();
+                } else if (event.button === 2) {
+                    event.preventDefault();
+                    return;
+                }
+            });
+
+            document.addEventListener("contextmenu", function(event) {
+                event.preventDefault();
+            });
+
+            document.onkeydown = function(e) {
+                if (event.keyCode == 123) {
+                    return false;
+                }
+                if (e.ctrlKey && e.keyCode == 85) {
+                    return false;
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

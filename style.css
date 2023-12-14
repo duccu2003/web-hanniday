@@ -1,0 +1,127 @@
+.option {
+    width: 30%;
+    height: 55%;
+    background-color: #ffffff58;
+    border-radius: 30%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+    transition: transform 0.3s ease;
+    background-repeat: no-repeat;
+}
+
+.option.selected {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+.option a {
+    pointer-events: auto;
+}
+
+#menu {
+    display: none;
+}
+
+body {
+    background-position: top;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0);
+    padding: 10px;
+    z-index: 2;
+}
+
+.popup-content {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup img {
+    width: 80%;
+    height: auto;
+    background: #ffffff00;
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 120px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #f70000;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: #381313;
+    border-radius: 50%;
+    border: 2px solid #f4f4f4;
+    font-weight: bold;
+}
+
+.copy {
+    background-color: #ffffff;
+    color: #000000ba;
+    padding: center, center;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+}
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+    body:before {
+        font-size: 4vw;
+    }
+    body::after {
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1242px) {
+    body:before {
+        font-size: calc(4 + 2 * ((100vw - 600px) / 642));
+    }
+    body::after {
+        font-size: calc(3 + 2 * ((100vw - 600px) / 642));
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .close-btn,
+    .popup-content,
+    .copy {
+        width: 90%;
+        max-width: 100%;
+    }
+    .copy {
+        font-size: 90%;
+        padding: 2%;
+    }
+    .close-btn {
+        top: 2%;
+        right: 2%;
+        font-size: 20px;
+        width: 7%;
+        height: 5%;
+        line-height: 5%;
+    }
+    .popup img {
+        width: 100%;
+        height: auto;
+        border-radius: 2%;
+        padding: 2%;
+    }
+}

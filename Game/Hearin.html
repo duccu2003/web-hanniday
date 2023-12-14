@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport">
+    <title>Hearin</title>
+    <link rel="icon" href="icon/2.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="mode.css" />
+
+    <style>
+        #scoreboard {
+            background-color: #56f356;
+        }
+        /* Các điều chỉnh chung */
+        
+        body {
+            margin: 0;
+            padding: 0;
+            height: 1080px;
+            width: 1920px;
+        }
+        
+        html,
+        body {
+            overflow: hidden;
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .bullet-halo {
+                width: 15px;
+                height: 15px;
+            }
+            .light-beam-halo {
+                width: 30px;
+                height: 30px;
+            }
+            #scoreboard {
+                font-size: 14px;
+            }
+            #character {
+                width: 45px;
+                height: 45px;
+            }
+            body {
+                height: 1440px;
+                width: 600px;
+            }
+        }
+        
+        @media only screen and (max-width: 1080px) {
+            body {
+                height: 1920px;
+                width: 1080px;
+            }
+            .bullet-halo {
+                width: 20px;
+                height: 20px;
+            }
+            .light-beam-halo {
+                width: 40px;
+                height: 40px;
+            }
+            #scoreboard {
+                font-size: 16px;
+            }
+            #character {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        
+        .bullet-halo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(200, 162, 200, 0.5);
+            transform: translate(-50%, -50%);
+            animation: bullet-halo-animation 1s ease-out;
+            pointer-events: none;
+        }
+        
+        .light-beam-halo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            animation: light-beam-halo-animation 2s ease-out;
+            pointer-events: none;
+        }
+        
+        @keyframes bullet-halo-animation {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes light-beam-halo-animation {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0.2;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .light-beam {
+            background-image: url("skill/hearin.webp");
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* Các thuộc tính khác... */
+        }
+        
+        #character:after {
+            content: "";
+            width: 70%;
+            height: 50%;
+            background: radial-gradient( circle, rgba(36, 190, 116, 0.5) 30%, rgba(92, 203, 131, 0.3) 70%);
+            position: absolute;
+            opacity: 0;
+            animation: glow 1.8s infinite;
+            top: 20px;
+            left: -20px;
+            transform: scaleX(0);
+            transform-origin: righttop;
+            transition: background-color 0.1s ease-in-out;
+        }
+        
+        @keyframes glow {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+        
+        #character {
+            width: 65px;
+            height: 65px;
+            background-image: url("icon/2.webp");
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 40%;
+            transition: transform 0.1s ease-out;
+        }
+        
+        .character:before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: calc(100% + 2px);
+            height: calc(100% + 2px);
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.5);
+            animation: halo 1s infinite;
+        }
+        
+        @keyframes halo {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+        
+        #character.move {
+            transform: translate(var(--x), var(--y));
+        }
+        
+        #character.move:after {
+            transform: scaleX(1);
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("background/hearin1.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 10000;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Màu nền mờ */
+            opacity: 0.5;
+            /* Độ trong suốt */
+        }
+        
+        .game-over {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: "F1", sans-serif;
+            font-size: 130px;
+            font-weight: bold;
+            color: #1eea51;
+            border-radius: 70px;
+            pointer-events: none;
+            z-index: 10001;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /* Màu chữ */
+        }
+        
+        @font-face {
+            font-family: "F1";
+            src: url("font/BLOXAT.ttf");
+            /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+        }
+        
+        .diem-so {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            font-weight: bold;
+            color: #1eea51;
+            border-radius: 50px;
+            pointer-events: none;
+            z-index: 10001;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            /* Màu chữ */
+        }
+        
+        .button-container {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10002;
+        }
+        
+        .button-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #1eea51;
+            /* Màu nền */
+            color: #000;
+            /* Màu chữ */
+            border-radius: 20px;
+            /* Đường cong viền */
+            border: none;
+            /* Loại bỏ đường viền */
+        }
+        
+        #hinh-anh {
+            width: 40px;
+            /* Điều chỉnh kích thước chiều rộng của hình */
+            height: auto;
+            /* Tự động tính toán chiều cao dựa trên tỷ lệ khung hình */
+        }
+    </style>
+    <div id="loading" style="text-align: center;">
+        <img src="https://telegraph-image-bak.pages.dev/file/431920b688bfd9f1c6069.gif" alt="Loading">
+        <b id="loadingText" style="margin-top: 10px;">Loading...</b>
+    </div>
+</head>
+
+<body>
+
+    <audio id="game-music" autoplay loop>
+        <source src="" type="audio/mp3" />
+      </audio>
+    <div id="game-container">
+        <div id="character" class="centered-character"></div>
+
+    </div>
+
+    <div id="scoreboard">
+        <span id="score"><img
+            src="point.webp"
+                alt="score"
+                style="vertical-align: middle;"
+              />0</span>
+        <span id="time"><img
+            src="time.webp"
+                alt="time"
+                style="vertical-align: middle;"
+              />0s</span>
+        <span id="soDanDisplay"><img src="pow.webp" alt="time"
+            style="vertical-align: middle;"/> 30
+        </span>
+        <span id="l"><img src="hearin.webp" alt="Hồi chiêu" id="hinh-anh" style="vertical-align: middle;"> 0s</span>
+    </div>
+    <script src="GetUpHearin.js"></script>
+    <script src="mode.js"></script>
+    <audio id="Over-sound" src=""></audio>
+    <audio id="bullet-sound" src="audio/Shoot.mp3"></audio>
+    <audio id="Lover-sound" src="audio/hearin.mp3"></audio>
+
+    <div id="lightbeam "></div>
+
+    <script>
+        document.addEventListener("click ", function() {
+            playGameMusic();
+        });
+    </script>
+</body>
+
+</html>

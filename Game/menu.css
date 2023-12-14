@@ -1,0 +1,359 @@
+/* Các điều chỉnh chung */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none;
+    background-position: center;
+}
+
+
+/* Điều chỉnh cho màn hình nhỏ (tối đa 600px) */
+
+.option a {
+    pointer-events: auto;
+}
+
+#menu {
+    display: none;
+}
+
+.option.selected {
+    background-color: #ffcc00;
+    /* Màu nền của option được chọn */
+    color: #333;
+    /* Màu chữ của option được chọn */
+}
+
+@font-face {
+    font-family: "F1";
+    src: url("font/BLOXAT.ttf");
+    /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+}
+
+@font-face {
+    font-family: "F2";
+    src: url("font/BungeeShade-Regular.ttf");
+    /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+}
+
+body:before {
+    content: "NewJeans";
+    border-radius: 20px;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "F1", sans-serif;
+    font-size: 6vw;
+    font-weight: bold;
+    color: #160db79c;
+    animation: colorChange 8s infinite;
+    /* Sử dụng animation */
+}
+
+body::after {
+    content: "Hãy Chọn Nhân Vật";
+    border-radius: 20px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "F2", sans-serif;
+    font-size: 4vw;
+    font-weight: bold;
+    color: #160db79c;
+    /* Sử dụng animation */
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 auto;
+}
+
+.option {
+    position: absolute;
+    width: 30%;
+    height: 55%;
+    text-align: center;
+    background-color: #ffffff58;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+    transition: transform 0.3s ease;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.o1 {
+    color: #4e3acb;
+    /* Màu chữ của tên option */
+}
+
+.o2 {
+    color: #1a8a45;
+    /* Màu chữ của tên option */
+}
+
+.o3 {
+    color: #cfe924;
+    /* Màu chữ của tên option */
+}
+
+.o4 {
+    color: #a919c6;
+    /* Màu chữ của tên option */
+}
+
+.o5 {
+    color: #d73895;
+    /* Màu chữ của tên option */
+}
+
+.option:hover {
+    transform: scale(1.1);
+}
+
+.option a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;
+    color: #333;
+}
+
+.option img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.option p {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.option-1 {
+    top: 10%;
+    left: 20%;
+}
+
+.option-2 {
+    top: 17.5%;
+    left: 60%;
+}
+
+.option-3 {
+    bottom: 10%;
+    left: 15%;
+}
+
+.option-4 {
+    bottom: 5%;
+    left: 55%;
+}
+
+.option-5 {
+    top: 45%;
+    left: 40%;
+}
+
+.note,
+.note1,
+.instruction,
+.instruction1,
+.t1,
+.t11 {
+    position: absolute;
+    font-size: 2vw;
+    padding: 0.5vw;
+    border-radius: 1vw;
+    pointer-events: none;
+}
+
+#game-music {
+    display: none;
+}
+
+.clickable-link {
+    pointer-events: auto;
+    /* Các thuộc tính CSS khác */
+}
+
+.option {
+    position: relative;
+}
+
+.hover-text {
+    position: absolute;
+    top: -30%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8vw;
+    font-weight: bold;
+    color: rgb(230, 21, 21);
+    opacity: 0;
+    transition: opacity 0.3s;
+    animation: colorChange 2s infinite;
+}
+
+@keyframes colorChange {
+    0% {
+        color: rgb(230, 21, 21);
+    }
+    14.2857% {
+        color: rgb(255, 165, 0);
+    }
+    28.5714% {
+        color: rgb(255, 255, 0);
+    }
+    42.8571% {
+        color: rgb(0, 128, 0);
+    }
+    57.1429% {
+        color: rgb(0, 0, 255);
+    }
+    71.4286% {
+        color: rgb(75, 0, 130);
+    }
+    85.7143% {
+        color: rgb(128, 0, 128);
+    }
+    100% {
+        color: rgb(230, 21, 21);
+    }
+}
+
+.option:hover .hover-text {
+    opacity: 1;
+}
+
+@media (max-width: 800px) and (max-height: 600px),
+(max-width: 1024px) and (max-height: 768px),
+(max-width: 1280px) and (max-height: 1024px),
+(max-width: 1920px) and (max-height: 1080px),
+(max-width: 2532px) and (max-height: 1170px),
+(max-width: 2688px) and (max-height: 1242px),
+(max-width: 2436px) and (max-height: 1125px),
+(max-width: 2208px) and (max-height: 1242px),
+(max-width: 1334px) and (max-height: 750px) {
+    body {
+        background-image: url("background/back-1920x1080.webp");
+        background-size: cover;
+    }
+    #loading img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-height: 800px) and (max-width: 600px),
+(max-height: 1024px) and (max-width: 768px),
+(max-height: 1280px) and (max-width: 1024px),
+(max-height: 1920px) and (max-width: 1080px),
+(max-height: 2532px) and (max-width: 1170px),
+(max-height: 2688px) and (max-width: 1242px),
+(max-height: 2436px) and (max-width: 1125px),
+(max-height: 2208px) and (max-width: 1242px),
+(max-height: 1334px) and (max-width: 750px) {
+    body {
+        background-image: url("background/back-1080x1920.webp");
+    }
+    body:before {
+        content: "NewJeans";
+        background-color: #9a9a9c2b;
+        border-radius: 20px;
+        position: absolute;
+        top: 3%;
+        left: center;
+        transform: translateX(-50%);
+        font-family: "F1", sans-serif;
+        font-size: auto;
+        font-weight: bold;
+        color: #160db79c;
+        animation: colorChange 8s infinite;
+        /* Sử dụng animation */
+    }
+    body::after {
+        content: "Hãy Chọn Nhân Vật";
+        background-color: #9a9a9c2b;
+        border-radius: 20px;
+        position: absolute;
+        top: 10%;
+        left: center;
+        transform: translateX(-50%);
+        font-family: "F2", sans-serif;
+        font-size: auto;
+        font-weight: bold;
+        color: #160db79c;
+        animation: colorChange 2s infinite;
+        /* Sử dụng animation */
+    }
+    #loading img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #160db7;
+    }
+    14.2857% {
+        color: #db7a16;
+    }
+    28.5714% {
+        color: #16db24;
+    }
+    42.8571% {
+        color: #b716db;
+    }
+    57.1428% {
+        color: #db1616;
+    }
+    71.4285% {
+        color: #16b1db;
+    }
+    85.7142% {
+        color: #dbd216;
+    }
+    100% {
+        color: #160db7;
+    }
+}
+
+#loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #F1F2F3;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    flex-direction: column;
+}
+
+#loadingText {
+    font-family: "F2";
+    font-size: xx-large;
+}

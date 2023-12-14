@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HanniDay</title>
+    <meta name="hanni" content="HanniDay" />
+
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="icon/w1.webp">
+    <link rel="stylesheet" href="style.css" clss="w1" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-repeat: round;
+            pointer-events: auto;
+            background-color: #f3f3f365;
+            background-size: cover;
+        }
+        
+        @font-face {
+            font-family: "F2";
+            src: url("BLOXAT.ttf");
+        }
+        
+        @keyframes appearAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .option {
+            margin-top: 60%;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            padding: 10%;
+        }
+        
+        .option:hover {
+            transform: scale(0.9);
+        }
+        
+        .o1 {
+            color: #f20303;
+        }
+        
+        .o2 {
+            color: #c65353;
+        }
+        
+        .option:hover .hover-text {
+            opacity: 1;
+        }
+        
+        .hover-text {
+            position: fixed;
+            bottom: -50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: "F2";
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.263);
+            background-size: cover;
+        }
+        
+        .option-2 img,
+        .option-3 img {
+            width: 80%;
+            height: 80%;
+            border-radius: 20px;
+        }
+        
+        .option-1 img {
+            margin-top: 10%;
+            width: 80%;
+            height: 80%;
+            border-radius: 20px;
+        }
+        
+        .o3 {
+            color: #ffea00;
+        }
+        
+        .text {
+            position: absolute;
+            top: 20%;
+            left: center;
+            transform: translateX(-50%);
+            font-size: 120px;
+            font-family: "F2";
+            color: transparent;
+            pointer-events: auto;
+            z-index: 1;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff5e7e, #ffc371);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: appearAnimation 2s ease-in-out forwards;
+            opacity: 0;
+        }
+        
+        @media (max-width: 800px) and (max-height: 600px),
+        (max-width: 1024px) and (max-height: 768px),
+        (max-width: 1280px) and (max-height: 1024px),
+        (max-width: 1920px) and (max-height: 1080px),
+        (max-width: 2532px) and (max-height: 1170px),
+        (max-width: 2688px) and (max-height: 1242px),
+        (max-width: 2436px) and (max-height: 1125px),
+        (max-width: 2208px) and (max-height: 1242px),
+        (max-width: 1334px) and (max-height: 750px) {
+            body {
+                background-size: cover;
+                background-image: url("page/HAPPY HANNI DAY 0.webp");
+            }
+            .hover-text {
+                font-size: 25px;
+                bottom: -60%;
+                width: 100%;
+                height: 60%;
+            }
+            #loading img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        
+        @media (max-height: 800px) and (max-width: 600px),
+        (max-height: 1024px) and (max-width: 768px),
+        (max-height: 1280px) and (max-width: 1024px),
+        (max-height: 1920px) and (max-width: 1080px),
+        (max-height: 2532px) and (max-width: 1170px),
+        (max-height: 2688px) and (max-width: 1242px),
+        (max-height: 2436px) and (max-width: 1125px),
+        (max-height: 2208px) and (max-width: 1242px),
+        (max-height: 1334px) and (max-width: 750px) {
+            body {
+                background-size: contain;
+                background-image: url("image/FkT1xy-VQAAEabI.webp");
+            }
+            .text {
+                top: 10%;
+                font-size: 60px;
+            }
+            #loading img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+        }
+        
+        #loadingText {
+            font-family: "F2";
+            font-size: larger;
+            color: #CF8DEA;
+        }
+        
+        #option-list {
+            margin-top: 15%;
+            justify-content: center;
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading">
+        <img src="https://telegraph-image-bak.pages.dev/file/db7f7594bda3c4d671071.gif" alt="Loading">
+        <b id="loadingText" style="margin-top: 10px;">Loading...</b>
+    </div>
+    <script src="main.js"></script>
+    <div class="text">HAPPY HANNI DAY</div>
+
+    <div id="option-list">
+        <div class="option option-1">
+            <a href="Game/game.html">
+                <img src="icon/Get_Up_Cover.webp" />
+                <div class="hover-text">
+                    <p class="o1">GAME</p>
+                </div>
+            </a>
+        </div>
+        <!-- <div class="option option-3">
+            <a onclick="openPopup()">
+                <img src="icon/box.webp" />
+                <div class="hover-text">
+                    <p class="o3">GIFT</p>
+                </div>
+            </a>
+        </div> -->
+    </div>
+
+    <!-- Thêm vào cuối body -->
+    <!-- <div class="popup" id="popup">
+        <div class="popup-content ">
+            <span class="close-btn " onclick="closePopup() ">❌</span>
+            <img src="QR.png " alt="Popup Image " />
+            <button class="copy " id="copyButton " onclick="copyLink() ">Copy Link</button>
+        </div>
+    </div> -->
+    <script>
+        function openPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+    <script>
+        // JavaScript để hiển thị/ẩn overlay loading
+        document.onreadystatechange = function() {
+            var loadingOverlay = document.getElementById('loading');
+
+            if (document.readyState === 'complete') {
+                loadingOverlay.style.display = 'none';
+            } else {
+                loadingOverlay.style.display = 'flex';
+            }
+        };
+
+        function checkRedirect() {
+            // Kiểm tra điều kiện chuyển hướng (ví dụ: trang không tồn tại)
+            if (document.readyState === "complete" && document.title === "404 Not Found") {
+                // Thực hiện chuyển hướng
+                window.location.href = "https://ducnguyenhoang.io.vn/404.html";
+            }
+        }
+
+        // Gọi hàm kiểm tra khi trang đã tải hoàn tất
+        document.addEventListener("DOMContentLoaded", checkRedirect);
+    </script>
+
+</body>
+
+</html>

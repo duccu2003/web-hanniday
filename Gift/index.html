@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="icon/box.png">
+    <title>Happy Birthday Hanni</title>
+    <link rel="stylesheet" href="style.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8T6T9VD2W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-Y8T6T9VD2W");
+    </script>
+    <style>
+        /* Kaushan+Script, oregano, sail */
+        
+        @import url("https://fonts.googleapis.com/css?family=Kaushan+Script");
+        html,
+        body,
+        .container {
+            height: 100%;
+            font-family: "Kaushan Script", "Sail", cursive;
+        }
+        
+        div#beach,
+        canvas#canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99;
+        }
+        
+        div#video {
+            position: absolute;
+            right: 243px;
+            bottom: 200px;
+        }
+        
+        div#video iframe {
+            width: 255px;
+            height: 155px;
+        }
+        
+        #people {
+            position: absolute;
+            bottom: 65px;
+            left: 40px;
+            width: 140px;
+        }
+        
+        #car {
+            position: absolute;
+            bottom: 46px;
+            left: 180px;
+            width: 230px;
+        }
+        
+        div#sea {
+            background-color: blue;
+            height: 85px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-image: radial-gradient( circle at center top, #23485a, #0d0246);
+        }
+        
+        .merrywrap {
+            position: absolute;
+            right: 0px;
+            left: 0px;
+            bottom: 0px;
+            top: 0px;
+            background-color: antiquewhite;
+            transition: background-color 0.5s ease;
+            z-index: 1000;
+            height: 102vh;
+        }
+        
+        .giftbox {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            left: 50%;
+            margin-left: -150px;
+            top: 40%;
+            z-index: 10;
+        }
+        
+        .giftbox>div {
+            background: #d44;
+            position: absolute;
+        }
+        
+        .giftbox>div:after,
+        .giftbox>div:before {
+            position: absolute;
+            content: "";
+            top: 0;
+        }
+        
+        .giftbox:after {
+            position: absolute;
+            color: #fff;
+            width: 100%;
+            content: "Click Me!";
+            left: 0;
+            bottom: 0;
+            font-size: 50px;
+            text-align: center;
+            transform: rotate(-20deg);
+            transform-origin: 0 0;
+        }
+        
+        .giftbox .cover {
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 25%;
+            z-index: 2;
+        }
+        
+        .giftbox .cover:before {
+            position: absolute;
+            height: 100%;
+            left: 50%;
+            width: 50px;
+            transform: translateX(-50%);
+            background: #fdc56d;
+        }
+        
+        .giftbox .cover>div {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 50%;
+            top: -50px;
+            transform: translateX(-50%);
+        }
+        
+        .giftbox .cover>div:before,
+        .giftbox .cover>div:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            content: "";
+            box-shadow: inset 0 0 0 15px #fdc56d;
+            border-radius: 30px;
+            transform-origin: 50% 100%;
+        }
+        
+        .giftbox .cover>div:before {
+            transform: translateX(-45%) skewY(40deg);
+        }
+        
+        .giftbox .cover>div:after {
+            transform: translateX(45%) skewY(-40deg);
+        }
+        
+        .giftbox .box {
+            right: 5%;
+            left: 5%;
+            height: 80%;
+            bottom: 0;
+        }
+        
+        .giftbox .box:before {
+            width: 50px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fdc56d;
+        }
+        
+        .giftbox .box:after {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .icons {
+            position: absolute;
+            left: 10px;
+            /*top:50%;
+  width: 100%;*/
+            height: auto;
+            transform: translateY(10px) rotate(-20deg);
+        }
+        
+        .icons .row {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .icons .row span {
+            color: #e5e5e5;
+            text-shadow: 4px 4px 0 rgba(96, 125, 139, 0.4);
+            font-size: 50px;
+            display: inline-block;
+            opacity: 0;
+            transition: transform 0.5s ease-in, opacity 0.7s;
+        }
+        
+        .step-1 .giftbox {
+            animation: wobble 0.5s linear infinite forwards;
+        }
+        
+        .step-1 .cover {
+            animation: wobble 0.5s linear infinite 0.1s forwards;
+        }
+        
+        .step-1 .icons .row span {
+            opacity: 1;
+        }
+        
+        .step-2 .giftbox:after {
+            opacity: 0;
+        }
+        
+        .step-3 .giftbox,
+        .step-4 .giftbox {
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .step-3 .giftbox:after,
+        .step-4 .giftbox:after {
+            opacity: 0;
+        }
+        
+        .step-2 .giftbox .cover {
+            animation: flyUp 0.4s ease-in forwards;
+        }
+        
+        .step-2 .giftbox .box {
+            animation: flyDown 0.2s ease-in 0.05s forwards;
+        }
+        
+        @keyframes wobble {
+            25% {
+                transform: rotate(4deg);
+            }
+            75% {
+                transform: rotate(-2deg);
+            }
+        }
+        
+        @keyframes flyUp {
+            75% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(20deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes flyDown {
+            75% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+        
+        .step-1 .icons .row span {
+            opacity: 0;
+        }
+        
+        .step-1 .icons .row span:first-child {
+            transform: translateY(700%) translateX(600%);
+        }
+        
+        .step-1 .icons .row span:nth-child(2) {
+            transform: translateY(700%) translateX(500%);
+        }
+        
+        .step-1 .icons .row span:nth-child(3) {
+            transform: translateY(700%) translateX(400%);
+        }
+        
+        .step-1 .icons .row span:nth-child(4) {
+            transform: translateY(700%) translateX(300%);
+        }
+        
+        .step-1 .icons .row span:nth-child(5) {
+            transform: translateY(700%) translateX(200%);
+        }
+        
+        .step-1 .icons .row span:nth-child(6) {
+            transform: translateY(700%) translateX(100%);
+        }
+        
+        .step-1 .icons .row span:nth-child(7) {
+            transform: translateY(700%) translateX(0);
+        }
+        
+        .step-1 .icons .row span:nth-child(8) {
+            transform: translateY(700%) translateX(-100%);
+        }
+        
+        .step-1 .icons .row span:nth-child(9) {
+            transform: translateY(700%) translateX(-200%);
+        }
+        
+        .step-1 .icons .row span:nth-child(10) {
+            transform: translateY(700%) translateX(-300%);
+        }
+        
+        .step-1 .icons .row span:nth-child(11) {
+            transform: translateY(700%) translateX(-400%);
+        }
+        
+        .step-1 .icons .row span:nth-child(12) {
+            transform: translateY(700%) translateX(-500%);
+        }
+        
+        .step-1 .icons .row span:nth-child(13) {
+            transform: translateY(700%) translateX(-600%);
+        }
+        
+        .step-2 .icons .row span:nth-child(2) {
+            -webkit-transition-delay: 0.1s;
+            transition-delay: 0.1s;
+        }
+        
+        .step-2 .icons .row span:nth-child(3) {
+            -webkit-transition-delay: 0.15s;
+            transition-delay: 0.15s;
+        }
+        
+        .step-2 .icons .row span:nth-child(4) {
+            -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s;
+        }
+        
+        .step-2 .icons .row span:nth-child(5) {
+            -webkit-transition-delay: 0.25s;
+            transition-delay: 0.25s;
+        }
+        
+        .step-2 .icons .row span:nth-child(6) {
+            -webkit-transition-delay: 0.3s;
+            transition-delay: 0.3s;
+        }
+        
+        .step-2 .icons .row span:nth-child(7) {
+            -webkit-transition-delay: 0.35s;
+            transition-delay: 0.35s;
+        }
+        
+        .step-2 .icons .row span:nth-child(8) {
+            -webkit-transition-delay: 0.4s;
+            transition-delay: 0.4s;
+        }
+        
+        .step-2 .icons .row span:nth-child(9) {
+            -webkit-transition-delay: 0.45s;
+            transition-delay: 0.45s;
+        }
+        
+        .step-2 .icons .row span:nth-child(10) {
+            -webkit-transition-delay: 0.5s;
+            transition-delay: 0.5s;
+        }
+        
+        .step-2 .icons .row span:nth-child(11) {
+            -webkit-transition-delay: 0.55s;
+            transition-delay: 0.55s;
+        }
+        
+        .step-2 .icons .row span:nth-child(12) {
+            -webkit-transition-delay: 0.6s;
+            transition-delay: 0.6s;
+        }
+        
+        .step-2 .icons .row span:nth-child(13) {
+            -webkit-transition-delay: 0.65s;
+            transition-delay: 0.65s;
+        }
+        
+        .step-2 .icons span,
+        .step-3 .icons span,
+        .step-4 .icons span {
+            opacity: 1;
+            transition-timing-function: cubic-bezier(0, 0, 0.2, 0.91);
+        }
+        
+        .step-4 .icons .row span,
+        .step-3 .icons .row span {
+            /*animation: wobble 0.6s linear infinite forwards;*/
+            color: #c6e2ff;
+            animation: neon 0.08s ease-in-out infinite alternate;
+        }
+        
+        .step-4 .icons .row span:nth-child(even),
+        .step-3 .icons .row span:nth-child(even) {
+            animation-duration: 0.7s;
+        }
+        
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
+            }
+            to {
+                text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58), 0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88), 0 0 60px #1e84f2;
+            }
+        }
+        
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 200px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #ddd;
+            box-shadow: inset 20px -10px 0 0 #b9b9b9;
+        }
+        
+        .moon .crater1 {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #bbb;
+            box-shadow: inset -3px 1.5px 0 0 #aaa;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .moon .crater2 {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #bbb;
+            box-shadow: inset -1px 0.5px 0 0 #aaa;
+            top: 45px;
+            right: 50px;
+        }
+        
+        .moon .crater3 {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #bbb;
+            box-shadow: inset -1.5px 0.75px 0 0 #aaa;
+            top: 60px;
+            right: 25px;
+        }
+        
+        @media (min-width: 1000px) {
+            .icons {
+                left: 30px;
+            }
+            .icons .row span {
+                font-size: 56px;
+            }
+            #people {
+                left: 80px;
+                bottom: 70px;
+                width: 160px;
+            }
+            div#beach {
+                background-size: 2000px;
+            }
+            div#video {
+                right: 290px;
+                bottom: 235px;
+            }
+            div#video iframe {
+                width: 295px;
+                height: 185px;
+            }
+            .moon {
+                right: 230px;
+            }
+        }
+        
+        canvas#c {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        #balloon-container {
+            height: 100vh;
+            padding: 1em;
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            transition: opacity 500ms;
+        }
+        
+        .balloon {
+            height: 125px;
+            width: 105px;
+            border-radius: 75% 75% 70% 70%;
+            position: relative;
+        }
+        
+        .balloon:before {
+            content: "";
+            height: 75px;
+            width: 1px;
+            padding: 1px;
+            background-color: #fdfd96;
+            display: block;
+            position: absolute;
+            top: 125px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .balloon:after {
+            content: "▲";
+            text-align: center;
+            display: block;
+            position: absolute;
+            color: inherit;
+            top: 120px;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        @keyframes float {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-300vh);
+                opacity: 0;
+            }
+        }
+        
+        .text {
+            position: absolute;
+            top: 20%;
+            left: -50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+            font-family: "F2";
+            color: transparent;
+            pointer-events: none;
+            z-index: 1;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff5e7e, #ffc371);
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: appearAnimation 2s ease-in-out forwards;
+            /* Áp dụng animation */
+            opacity: 0;
+            /* Đặt mặc định là ẩn */
+        }
+        
+        @font-face {
+            font-family: "F2";
+            src: url("./BLOXAT.ttf");
+            /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+        }
+        
+        @keyframes appearAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media only screen and (max-width: 600px) {
+            body,
+            html,
+            .container {
+                height: auto;
+            }
+            .merrywrap {
+                height: auto;
+            }
+            .giftbox {
+                width: 80%;
+                height: auto;
+                left: 50%;
+                margin-left: -40%;
+                top: 30%;
+            }
+            .giftbox>div {
+                width: 100%;
+                height: 70%;
+            }
+            .giftbox .cover {
+                width: 100%;
+                height: 20%;
+            }
+            .icons {
+                left: 5%;
+                transform: translateY(5px) rotate(-20deg);
+            }
+            .icons .row span {
+                font-size: 30px;
+            }
+            .text {
+                top: 10%;
+                font-size: 30px;
+            }
+            .moon {
+                top: 5%;
+                right: 10%;
+                width: 50px;
+                height: 50px;
+            }
+            #people {
+                bottom: 30px;
+                left: 10px;
+                width: 80px;
+            }
+            div#video {
+                right: 10px;
+                bottom: 60px;
+            }
+            div#video iframe {
+                width: 100%;
+                height: 100px;
+            }
+            #car {
+                left: 50%;
+                margin-left: -115px;
+                width: 200px;
+            }
+            div#sea {
+                height: 40px;
+            }
+            canvas#c {
+                top: auto;
+                left: auto;
+            }
+            #balloon-container {
+                padding: 0.5em;
+            }
+            .balloon {
+                height: 60px;
+                width: 50px;
+            }
+            .balloon img {
+                width: 50px;
+                height: auto;
+            }
+            .image-container,
+            .image-container00,
+            .image-container05,
+            .image-container1,
+            .image-container02,
+            .image-container03,
+            .image-container04 {
+                position: relative;
+                top: auto;
+                left: auto;
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                padding: 10px;
+                animation: none;
+            }
+            .image-container img,
+            .image-container00 img,
+            .image-container05 img,
+            .image-container1 img,
+            .image-container02 img,
+            .image-container03 img,
+            .image-container04 img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="merrywrap" class="merrywrap" onclick="startAnimation(); playMusic()">
+        <div class="giftbox">
+            <div class="cover">
+                <div></div>
+            </div>
+            <div class="box"></div>
+        </div>
+    </div>
+    <audio id="birthday-music" src="./song.mp3"></audio>
+    <canvas id="c"></canvas>
+    <div class="image-container">
+
+        <div class="image-container03">
+            <img src="./3.gif" alt="Image" />
+        </div>
+
+    </div>
+
+    <div id="balloon-container">
+    </div>
+    <script src="main.js">
+        // Ngăn chặn việc in mã nguồn trang web
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) {
+                e.preventDefault();
+            } else if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73)) {
+                e.preventDefault();
+            }
+        });
+
+        // Ngăn chặn việc truy cập vào DevTools
+        function detectDevTools() {
+            var devtools = /./;
+            devtools.toString = function() {
+                this.opened = true;
+                // Thực hiện các hành động mong muốn khi DevTools được mở
+            };
+
+            setInterval(function() {
+                console.log(devtools);
+            }, 1000);
+        }
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        detectDevTools();
+    </script>
+
+</body>
+
+</html>

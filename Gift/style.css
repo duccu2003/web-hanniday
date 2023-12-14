@@ -1,0 +1,306 @@
+body {
+    background: #e74;
+    overflow: hidden;
+    top: -10%;
+    background-image: url("./background/hanni.gif");
+    z-index: 99;
+}
+
+
+/* Thêm media query để điều chỉnh kích thước cho thiết bị di động */
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-size: cover;
+        /* hoặc các giá trị khác tùy thuộc vào yêu cầu cụ thể của bạn */
+    }
+    #balloon-container {
+        height: auto;
+        overflow: auto;
+    }
+    .merrywrap {
+        height: auto;
+    }
+    .balloon {
+        width: 80px;
+        height: auto;
+        animation: float 10s ease-in infinite;
+    }
+    .balloon img {
+        width: 80px;
+        height: auto;
+    }
+    .image-container,
+    .image-container00,
+    .image-container05,
+    .image-container1,
+    .image-container02,
+    .image-container03,
+    .image-container04 {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        padding: 10px;
+        animation: none;
+    }
+    .image-container img,
+    .image-container00 img,
+    .image-container05 img,
+    .image-container1 img,
+    .image-container02 img,
+    .image-container03 img,
+    .image-container04 img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        /* hoặc các giá trị khác tùy thuộc vào yêu cầu cụ thể của bạn */
+    }
+}
+
+div#beach {
+    background-image: url(https://dl.dropbox.com/s/oe0oce2udq44bj5/beachsil2.png);
+    background-position: bottom right;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.merrywrap {
+    height: 100vh;
+}
+
+canvas#c {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#balloon-container {
+    height: 100vh;
+    padding: 1em;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    transition: opacity 500ms;
+}
+
+.balloon {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    animation: float 10s ease-in infinite;
+}
+
+.balloon img {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: auto;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-300vh);
+        opacity: 0;
+    }
+}
+
+.rounded-border {
+    border-radius: 20px;
+    /* Đặt bán kính bo cong */
+    overflow: hidden;
+    /* Ẩn nội dung bị vượt quá khung viền */
+}
+
+.image-container {
+    position: fixed;
+    top: 20%;
+    left: 5px;
+    width: 400px;
+    /* Kích thước ảnh */
+    height: 300px;
+    /* Kích thước ảnh */
+    padding: 10px;
+    z-index: 1;
+    /* Đảm bảo ảnh hiển thị trên các phần tử khác */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.image-container00 {
+    position: fixed;
+    top: 20%;
+    right: 5px;
+    width: 400px;
+    /* Kích thước ảnh */
+    height: 300px;
+    /* Kích thước ảnh */
+    padding: 10px;
+    z-index: 1;
+    /* Đảm bảo ảnh hiển thị trên các phần tử khác */
+    animation: float 3s ease-in infinite, moveCase 3s infinite;
+}
+
+.image-container00 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.image-container05 {
+    position: fixed;
+    top: 20%;
+    left: 5px;
+    width: 400px;
+    /* Kích thước ảnh */
+    height: 300px;
+    /* Kích thước ảnh */
+    padding: 10px;
+    z-index: 1;
+    /* Đảm bảo ảnh hiển thị trên các phần tử khác */
+    animation: float 3s ease-in infinite, moveCase 3s infinite;
+}
+
+.image-container05 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.image-container1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Kích thước ảnh */
+    height: 100%;
+    /* Kích thước ảnh */
+    padding: 10px;
+    z-index: 1;
+    /* Đảm bảo ảnh hiển thị trên các phần tử khác */
+}
+
+.image-container1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-container02 {
+    position: fixed;
+    top: 5%;
+    right: 5px;
+    width: 850px;
+    height: 750px;
+    padding: 10px;
+    z-index: 1;
+    animation: moveImage0 3s infinite;
+}
+
+.image-container02 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes moveImage0 {
+    0% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    50% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes moveCase01 {
+    0% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    50% {
+        transform: translateX(-100%);
+    }
+}
+
+.image-container03 {
+    position: fixed;
+    top: 65%;
+    right: 1px;
+    width: 400px;
+    /* Kích thước ảnh */
+    height: 300px;
+    /* Kích thước ảnh */
+    padding: 10px;
+    z-index: 1;
+    /* Đảm bảo ảnh hiển thị trên các phần tử khác */
+}
+
+.image-container03 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.image-container04 {
+    position: fixed;
+    top: 5%;
+    left: 5px;
+    width: 850px;
+    height: 750px;
+    padding: 10px;
+    z-index: 1;
+    animation: moveImage1 3s infinite;
+}
+
+.image-container04 img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes moveImage1 {
+    0% {
+        transform: translateX(0%);
+    }
+    50% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+}
+
+@font-face {
+    font-family: "F2";
+    src: url("./BLOXAT.ttf");
+    /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+}
+
+@keyframes appearAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

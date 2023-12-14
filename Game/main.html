@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang đang bảo trì</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="icon" href="icon/Get_Up_Cover.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("background/main.webp");
+            background-color: #0b010f;
+            background-size: cover;
+            pointer-events: none;
+            position: absolute;
+            width: 80%;
+            /* Thay đổi giá trị width thành 80% */
+            height: 100%;
+            left: 10%;
+            /* Thay đổi giá trị left thành 10% */
+            bottom: 0;
+            /* Thay đổi giá trị bottom thành 0 */
+        }
+        
+        body {
+            overflow: hidden;
+        }
+        /* Sử dụng media queries để điều chỉnh các phần tử cho các tỉ lệ màn hình khác nhau */
+        
+        @media (max-width: 600px) {
+            .made-by {
+                font-size: 16px;
+            }
+        }
+        
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .made-by {
+                font-size: 18px;
+            }
+        }
+        
+        @font-face {
+            font-family: "F1";
+            src: url("font/BLOXAT.ttf");
+            /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+        }
+        
+        @font-face {
+            font-family: "F2";
+            src: url("font/BungeeShade-Regular.ttf");
+            /* Nếu font của bạn là .otf, hãy sử dụng src: url("path/to/your/font.otf"); */
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        #translation {
+            font-family: "F2", sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            color: #160db7;
+            text-align: center;
+        }
+        
+        .button-container {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        button {
+            pointer-events: auto;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #160db7;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="made-by">Made By Nguyen Hoang Duc</div>
+    <div class="container">
+        <p id="translation">TRANG ĐANG CẬP NHẬT XIN HÃY QUAY LẠI SAU 😅</p>
+    </div>
+
+    <div class="button-container">
+        <button id="translate-vi-en">English</button>
+        <button id="translate-ko-vi">번역</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.addEventListener("mousedown", function(event) {
+                if (event.button === 0) {
+                    shootBullet();
+                } else if (event.button === 2) {
+                    event.preventDefault();
+                    return;
+                }
+            });
+
+            document.addEventListener("contextmenu", function(event) {
+                event.preventDefault();
+            });
+
+            document.onkeydown = function(e) {
+                if (event.keyCode == 123) {
+                    return false;
+                }
+                if (e.ctrlKey && e.keyCode == 85) {
+                    return false;
+                }
+            };
+
+            const translation = document.getElementById('translation');
+            const translateViEnButton = document.getElementById('translate-vi-en');
+            const translateKoViButton = document.getElementById('translate-ko-vi');
+
+            let currentLanguage = 'vi';
+
+            translateViEnButton.addEventListener('click', () => {
+                if (currentLanguage === 'en') {
+                    translation.textContent = translateText('en', 'vi', translation.textContent);
+                    currentLanguage = 'vi';
+                } else {
+                    translation.textContent = translateText('vi', 'en', translation.textContent);
+                    currentLanguage = 'en';
+                }
+            });
+
+            translateKoViButton.addEventListener('click', () => {
+                if (currentLanguage === 'vi') {
+                    translation.textContent = translateText('vi', 'ko', translation.textContent);
+                    currentLanguage = 'ko';
+                } else {
+                    translation.textContent = translateText('ko', 'vi', translation.textContent);
+                    currentLanguage = 'vi';
+                }
+            });
+
+            function translateText(sourceLang, targetLang, text) {
+                let translatedText = '';
+
+                if (sourceLang === 'vi' && targetLang === 'en') {
+                    translatedText = translateVietnameseToEnglish(text);
+                } else if (sourceLang === 'en' && targetLang === 'vi') {
+                    translatedText = translateEnglishToVietnamese(text);
+                } else if (sourceLang === 'ko' && targetLang === 'vi') {
+                    translatedText = translateKoreanToVietnamese(text);
+                } else if (sourceLang === 'vi' && targetLang === 'ko') {
+                    translatedText = translateVietnameseToKorean(text);
+                }
+
+                return translatedText;
+            }
+
+            function translateVietnameseToEnglish(text) {
+                const vietnameseToEnglishDict = {
+                    'TRANG ĐANG CẬP NHẬT XIN HÃY QUAY LẠI SAU 😅': 'PAGE IS BEING UPDATED, PLEASE COME BACK LATER 😅',
+                    // Thêm các cặp từ điển khác tương ứng ở đây
+                };
+
+                return vietnameseToEnglishDict[text] || text;
+            }
+
+            function translateEnglishToVietnamese(text) {
+                const englishToVietnameseDict = {
+                    'PAGE IS BEING UPDATED, PLEASE COME BACK LATER 😅': 'TRANG ĐANG CẬP NHẬT XIN HÃY QUAY LẠI SAU 😅',
+                    // Thêm các cặp từ điển khác tương ứng ở đây
+                };
+
+                return englishToVietnameseDict[text] || text;
+            }
+
+            function translateKoreanToVietnamese(text) {
+                const koreanToVietnameseDict = {
+                    // Thêm các cặp từ điển tương ứng ở đây
+                    '페이지가 업데이트 중입니다. 나중에 다시 방문해주세요 😅': 'TRANG ĐANG CẬP NHẬT XIN HÃY QUAY LẠI SAU 😅'
+                };
+
+                return koreanToVietnameseDict[text] || text;
+            }
+
+            function translateVietnameseToKorean(text) {
+                const vietnameseToKoreanDict = {
+                    'TRANG ĐANG CẬP NHẬT XIN HÃY QUAY LẠI SAU 😅': '페이지가 업데이트 중입니다. 나중에 다시 방문해주세요 😅'
+                        // Thêm các cặp từ điển tương ứng ở đây
+                };
+
+                return vietnameseToKoreanDict[text] || text;
+            }
+        });
+    </script>
+</body>
+
+</html>
